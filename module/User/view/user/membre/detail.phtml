@@ -1,0 +1,16 @@
+<?php 
+     if($detail->getPhoto()){
+     $photo ="photo".$detail->getIdMembre(); 
+     }
+     else{
+     $photo = "defaut";}
+ 
+     ?>
+
+<td><?php echo $detail->getNom();?></td>
+     <td><?php echo $detail->getPrenom();?></td>
+     <td><?php echo $detail->getPseudo();?></td>
+     <td><?php echo $detail->getAdresse();?></td>
+     <td><?php echo $detail->getCodePostal();?></td>
+     <td><?php echo $detail->getSiteweb();?></td>
+        <td><img src="../../img/membre/<?php echo $photo;?>.jpg" alt=""></td>

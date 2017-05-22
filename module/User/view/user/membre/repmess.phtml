@@ -1,0 +1,76 @@
+<table class="table">
+
+
+
+    <tr>
+        <td><?php echo $mess->getSujetMess(); ?></td>
+        <td><?php echo $mess->getTexteMess(); ?></td>
+
+    </tr>
+</table>
+<?php
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action', $this->url('message'));
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+
+<table>
+
+    <theader>
+
+        <h1>Répondre :</h1>
+    </theader>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+
+        <tr>
+            <th><?php echo $this->formLabel($form->get('dest')); ?>
+            </th>
+            <td>
+                <p>
+                    <?php echo $this->formInput($form->get('dest')) . " "; ?>
+                   
+                </p>    
+                <?php echo $this->formElementErrors($form->get('dest'), array('class' => 'error_list')); ?>
+            </td>
+
+        </tr>
+        <tr>
+            <th><?php echo $this->formLabel($form->get('sujet')); ?></th>
+            <td>
+                <p>
+                    <?php echo $this->formInput($form->get('sujet')); ?>
+
+                </p>
+                <?php echo $this->formElementErrors($form->get('sujet'), array('class' => 'error_list')); ?>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td colspan="2">
+                <p>
+                    <?php echo $this->formRow($form->get('text')); ?>
+
+                </p>
+                <?php echo $this->formElementErrors($form->get('text'), array('class' => 'error_list')); ?>
+            </td>
+
+        </tr>
+
+
+    </tbody>
+</table>
+<?php
+echo $this->form()->closeTag();
+?>    
+
+</table>

@@ -1,0 +1,26 @@
+<a href="/admin/membre/addmembre">Ajouter</a>
+<table class="table">
+
+ <?php foreach ($membre as $user) : 
+     if($user->getPhoto()){
+     $photo ="photo".$user->getIdMembre(); 
+     }
+     else{
+     $photo = "defaut";}?>
+    <tr>
+     <td><?php echo $user->getNom();?></td>
+     <td><?php echo $user->getPrenom();?></td>
+     <td><?php echo $user->getPseudo();?></td>
+     <td><?php echo $user->getAdresse();?></td>
+     <td><?php echo $user->getCodePostal();?></td>
+     <td><?php echo $user->getSiteweb();?></td>
+     <td><img src="../img/membre/<?php echo $photo;?>.jpg" alt="test"></td>
+     <?php if($user->getAdmin()!=1){ ?>
+     <td><a href="/admin/membre/deletemembre/<?php echo $user->getIdMembre(); ?>">Supprimer</a></td>
+     <?php } ?>
+     <td><a href="/admin/membre/editmembre/<?php echo $user->getIdMembre();?>">Editer</a></td>
+    </tr>
+
+ <?php endforeach; ?>
+
+</table>

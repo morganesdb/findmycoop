@@ -1,0 +1,41 @@
+<script>
+    $(document).ready(function() {
+    $('.cat').click(function() {
+            $("#" + $(this).attr('id') + " ul").slideToggle("slow");
+    });
+  }); 
+		$(document).ready(function() {
+			$('.event h4').click(function() {
+				$('#cacher').slideToggle("slow");
+			});         
+			
+		});
+
+</script>
+ <?php 
+ 
+ for ($i = 0; $i <=1; $i++) {
+     ?> <div class="ev"> <?php
+     $date = $event[$i]->getDateEvent();
+             // $date = $date->format('Y-m-d H:i:s');
+    echo "<b>".$event[$i]->getNomEvent()."";
+     echo "<span>".$event[$i]->getDateEvent() ->format('d/m/Y')."</span></b><br><br>";
+    echo substr($event[$i]->getContenuEvent(),0,50);
+  
+     ?> </div> <?php
+}
+    
+?>
+<div id="cacher">
+ <?php 
+ 
+ for ($i = 2; $i <=4; $i++) {
+     ?> <div class="ev"> <?php
+    echo "<b>".$event[$i]->getNomEvent()."";
+     echo "<span>".$event[$i]->getDateEvent() ->format('d/m/Y')."</span></b><br><br>";
+    echo substr($event[$i]->getContenuEvent(),0,50);
+     ?> </div> <?php
+}
+    
+?>
+    </div><h4>Voir plus</h4>

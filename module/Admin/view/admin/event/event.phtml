@@ -1,0 +1,9 @@
+<a href="/admin/event/add">Ajouter</a><br>
+ <?php foreach ($event as $e) : ?>
+     
+     <strong><p><?php echo $e->getNomEvent();?></p> </strong>
+       <p><?php echo $e->getContenuEvent();?></p>
+       <a href="/admin/event/edit/<?php echo $e->getIdEvent(); ?>">Editer</a>
+       <a href="/admin/event/delete/<?php echo $e->getIdEvent(); ?>">Supprimer</a>
+
+ <?php endforeach; ?>

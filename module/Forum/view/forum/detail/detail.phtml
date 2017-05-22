@@ -1,0 +1,16 @@
+<?php 
+     if($this->escapeHtml($detail->getPhoto())){
+     $photo ="photo".$this->escapeHtml($detail->getIdMembre()); 
+     }
+     else{
+     $photo = "defaut";}
+ 
+     ?>
+
+<td><?php echo $this->escapeHtml($detail->getNom());?></td>
+     <td><?php echo $this->escapeHtml($detail->getPrenom());?></td>
+     <td><?php echo $this->escapeHtml($detail->getPseudo());?></td>
+     <td><?php echo $this->escapeHtml($detail->getAdresse());?></td>
+     <td><?php echo $this->escapeHtml($detail->getCodePostal());?></td>
+     <td><?php echo $this->escapeHtml($detail->getSiteweb());?></td>
+        <td><img src="../../img/membre/<?php echo $photo;?>.jpg" alt=""></td>

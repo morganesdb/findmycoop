@@ -1,0 +1,13 @@
+<table class="table">
+
+ <?php foreach ($mess as $m) : ?>
+    
+    <tr>
+     <td><?php echo $m->getSujetMess();?></td>
+     <td><?php echo substr($m->getTexteMess(),0,200)."...";?></td>
+     <td><a href="">Détail</a></td>
+    </tr>
+
+ <?php endforeach; ?>
+
+</table>

@@ -1,0 +1,68 @@
+
+
+<h1><?php echo $title; ?></h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('add_event'));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id_event'));
+?>
+    <table id="category_form">
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <?php echo $this->formSubmit($form->get('submit'));?>
+                </td>
+              </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <th><?php echo $this->formLabel($form->get('name'));?></th>
+                <td>
+                    <p>
+                        <?php echo $this->formInput($form->get('name'));?>
+                    </p>
+                    <?php echo $this->formElementErrors($form->get('name'), array('class' => 'error_list'));?>
+                </td>
+            </tr>
+             <tr>
+                <th><?php echo $this->formLabel($form->get('contenu'));?></th>
+                <td>
+                    <p>
+                        <?php echo $this->formInput($form->get('contenu'));?>
+                    </p>
+                    <?php echo $this->formElementErrors($form->get('contenu'), array('class' => 'error_list'));?>
+                </td>
+            </tr>
+             <tr>
+                <th><?php echo $this->formLabel($form->get('date'));?></th>
+                <td> 
+                    
+                        <?php echo $this->formInput($form->get('date'));?>
+                   
+                    <?php echo $this->formElementErrors($form->get('date'), array('class' => 'error_list'));?>
+                </td>
+            </tr>
+            <tr>
+            <th><?php echo $this->formLabel($form->get('time'));?></th>
+            <td> 
+
+                    <?php echo $this->formInput($form->get('time'));?>
+
+                <?php echo $this->formElementErrors($form->get('time'), array('class' => 'error_list'));?>
+            </td>
+            </tr>
+         
+        </tbody>
+    </table>
+ <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+<?php
+    echo $this->form()->closeTag();
+?>                   

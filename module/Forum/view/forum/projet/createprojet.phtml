@@ -1,0 +1,48 @@
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('creatp'));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+<table>
+    <tfoot>
+        <tr>
+            <td >
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <th><?php echo $this->formLabel($form->get('titre')); ?></th>
+            <td>
+                <p>
+                    <?php echo $this->formInput($form->get('titre')); ?>
+                </p>
+                <?php echo $this->formElementErrors($form->get('titre'), array('class' => 'error_list')); ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th><?php echo $this->formLabel($form->get('idCat')); ?></th>
+            <td>
+                <p>
+                    <?php echo $this->formSelect($form->get('idCat')); ?>
+                </p>
+                <?php echo $this->formElementErrors($form->get('idCat'), array('class' => 'error_list')); ?>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                <p>
+                    <?php echo $this->formRow($form->get('texte')); ?>
+                </p>
+                <?php echo $this->formElementErrors($form->get('texte'), array('class' => 'error_list')); ?>
+            </td>
+        </tr>
+        
+</table>

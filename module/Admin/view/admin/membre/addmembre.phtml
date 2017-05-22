@@ -1,0 +1,106 @@
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('addmembre'));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+<table>
+    <tfoot>
+        <tr>
+            <td >
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+
+        <tr>
+
+
+            <th><?php echo $this->formLabel($form->get('Name')); ?></th>
+    <p>
+    <th> <?php echo $this->formInput($form->get('Name')); ?>  </th>
+</p>
+<?php echo $this->formElementErrors($form->get('Name'), array('class' => 'error_list')); ?>
+
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('prenom')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('prenom')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('prenom'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('pseudo')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('pseudo')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('pseudo'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('password')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('password')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('password'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('adresse')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('adresse')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('adresse'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('siteweb')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('siteweb')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('siteweb'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+    <tr>
+        <th><?php echo $this->formLabel($form->get('ville')); ?></th>
+        <td>
+            <p>
+<?php echo $this->formSelect($form->get('ville')); ?>
+            </p>
+
+<?php echo $this->formElementErrors($form->get('ville'), array('class' => 'error_list')); ?>
+          
+                             
+        </td>
+    </tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('Description')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('Description')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('Description'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+<tr>
+    <th><?php echo $this->formLabel($form->get('email')); ?></th>
+    <td>
+        <p>
+            <?php echo $this->formInput($form->get('email')); ?>
+        </p>
+        <?php echo $this->formElementErrors($form->get('email'), array('class' => 'error_list')); ?>
+    </td>
+</tr>
+</form></table>
+<?php
+echo $this->form()->closeTag($form);

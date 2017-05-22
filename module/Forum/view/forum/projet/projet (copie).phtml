@@ -1,0 +1,41 @@
+
+<?php
+if ($_SESSION){
+   ?> <a href="/creatp">Nouveau</a>
+   <?php
+}
+foreach ($projet as $cat) :
+    if (empty($cat->getIdParent())) {
+        echo $cat->getNomCat();
+         ?> <br> <?php
+    }
+    foreach ($projet as $cat1):
+        if ($objet = $cat1->getIdParent()) {
+            if ($objet->getIdCat() == $cat->getIdCat()) {
+                echo $cat1->getNomCat();
+                foreach ($forum as $post):
+                    if ($cat1->getIdCat() == $post->getIdCat()->getIdCat()) {
+                        ?> <br> <a href="/detailp/<?php echo $post->getIdForum(); ?>" ><ul><?php
+                        ?> <li> <?php echo $post->getTitreF();?> </li> <?php
+                       ?> <li> <?php echo ' autheur : ';
+                       if (!empty($post->getIdCreateur())){
+                       echo $post->getIdCreateur()->getNom();}?> </li> <?php
+                        ?> </ul></a><?php
+                    }
+
+                endforeach;
+                 ?> <br> <?php
+            }
+        }
+    endforeach;
+    
+    ?>
+
+    <br>
+
+
+
+
+
+
+<?php endforeach; ?>

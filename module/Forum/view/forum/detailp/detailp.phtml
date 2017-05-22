@@ -1,0 +1,57 @@
+
+<td><?php echo $detailp->getTitreF(); ?> <a href="">Url du Projet</a> <br></td><!--afficher le nom du projet -->
+<?php echo 'BOSS : ' . $detailp->getIdCreateur()->getNom(); ?>
+<?php if ($_SESSION['admin']) {
+    ?> <a href="/deletepr/<?php echo $detailp->getIdForum(); ?>">Supprimer</a><?php }
+?>
+    <?php if (!empty($detailp->getIdCreateur()) && $_SESSION['id'] == $detailp->getIdCreateur()->getIdMembre()) {
+        ?> <a href="../idcreat/<?php echo $detailp->getIdForum(); ?>">Lacher projet</a><?php
+}
+if ($_SESSION && empty($detailp->getIdCreateur())) {
+    ?> <a href="../idcreat/<?php echo $detailp->getIdForum(); ?>">Prendre Projet</a><?php
+}
+foreach ($forumall as $all):
+    $idcreat1=$all->getIdCreateur()->getNom();
+    if ($idcreat!=$idcreat1&& $idcreat1!=$detailp->getIdCreateur()->getNom()&&$all->getIdParent() == $detailp->getIdForum() && (!empty($all->getIdCreateur()))) {
+        ?> <br> <?php
+        $idcreat=$all->getIdCreateur()->getNom();
+        echo 'Collabo : ' . $idcreat;
+    }
+endforeach;
+?>    
+<br>
+
+<td><?php echo $detailp->getTexteF(); ?></td><!--afficher le texte du projet -->
+
+
+
+<?php
+foreach ($forumall as $all):
+
+    if ($all->getIdParent() == $detailp) {
+        ?> <hr> <?php
+        echo $all->getTitreF(); // afficher le titre de la tache (lier au projet) 
+        if (!empty($all->getIdCreateur())) {
+
+            echo ' USER : ' . $all->getIdCreateur()->getNom();
+        }
+        ?> <br> <?php
+        echo $all->getTexteF(); // affiche le texte de la tache 
+        if ($_SESSION['admin']) {
+            ?> <a href="/deletep/<?php echo $all->getIdForum(); ?>">Supprimer</a><?php
+        }
+    }
+    if ($_SESSION) {
+        if (!empty($all->getIdCreateur()) && $_SESSION['id'] == $all->getIdCreateur()->getIdMembre()) {
+            ?> <a href="../idcreat/<?php echo $all->getIdForum(); ?>">Lacher projet</a><?php
+        }
+        if (empty($all->getIdCreateur())) {
+            ?> <a href="../idcreat/<?php echo $all->getIdForum(); ?>">Prendre Projet</a><?php
+        }
+    }
+endforeach;
+?>
+<hr>
+<?php if (!empty($detailp->getIdCreateur()) && $_SESSION['id'] == $detailp->getIdCreateur()->getIdMembre()) {
+    ?><br><a href="../creatrp/<?php echo $detailp->getIdForum(); ?>">Ajouter</a><?php
+}

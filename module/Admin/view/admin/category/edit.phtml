@@ -1,0 +1,50 @@
+
+
+<h1><?php echo $title; ?></h1>
+
+<?php  
+if($_SESSION['admin']!=1){
+     header('Location: /');
+exit;}
+    $form = $this->form;
+       $form->setAttribute('action', $this->url('zfcadmin/category'));
+    $form->prepare();
+
+
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('idcat'));
+?>
+    <table id="category_form">
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <?php echo $this->formSubmit($form->get('submit'));?>
+                </td>
+              </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <th><?php echo $this->formLabel($form->get('name'));?></th>
+                <td>
+                    <p>
+                        <?php echo $this->formInput($form->get('name'));?>
+                    </p>
+                    <?php echo $this->formElementErrors($form->get('name'), array('class' => 'error_list'));?>
+                </td>
+            </tr><?php if($cat->getIdParent()){ ?>
+             <tr>
+                <th><?php echo $this->formLabel($form->get('parent'));?></th>
+                <td>
+                    <p>
+                        <?php echo $this->formSelect($form->get('parent'));?>
+                    </p>
+                    <?php echo $this->formElementErrors($form->get('parent'), array('class' => 'error_list'));?>
+                </td>
+            </tr><?php } ?>
+            
+        </tbody>
+    </table>
+<?php
+    echo $this->form()->closeTag();
+
+?>                   

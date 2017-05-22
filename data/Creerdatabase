@@ -1,0 +1,324 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
+--
+-- Client :  localhost
+-- Généré le :  Ven 03 Février 2017 à 15:52
+-- Version du serveur :  5.7.16-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `findmycoop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Categorie_FMC`
+--
+
+CREATE TABLE `BEZIERS_Categorie_FMC` (
+  `ID_Cat` int(11) NOT NULL,
+  `Nom_Cat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ID_Parent` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Categorie_FMC`
+--
+
+INSERT INTO `BEZIERS_Categorie_FMC` (`ID_Cat`, `Nom_Cat`, `ID_Parent`) VALUES
+(1, 'Informatiquee', NULL),
+(6, 'Electronique', NULL),
+(7, 'Web', NULL),
+(8, 'Cuisine', NULL),
+(9, 'Développement web', 1),
+(11, 'Arduino', 6),
+(12, 'Raspberry', 6),
+(20, 'admina', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Event_FMC`
+--
+
+CREATE TABLE `BEZIERS_Event_FMC` (
+  `ID_Event` int(11) NOT NULL,
+  `Nom_Event` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Date_Event` datetime NOT NULL,
+  `Contenu_Event` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Event_FMC`
+--
+
+INSERT INTO `BEZIERS_Event_FMC` (`ID_Event`, `Nom_Event`, `Date_Event`, `Contenu_Event`) VALUES
+(1, 'Reveillon', '2016-12-31 20:00:00', 'Venez faire la fête !!!!'),
+(2, 'Premiere', '2017-01-16 12:00:00', 'On a enfin reussi a afficher la premiere page !!'),
+(3, 'Beuverie', '2014-01-16 17:00:00', 'Rendez vous tous au bar pour feter le lancement du site . Bruno paye .'),
+(4, 'Event 1', '2017-02-15 17:35:33', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque faucibus orci, et placerat est cursus sit amet. Nulla hendrerit suscipit nulla vel vehicula. Donec eget ultrices arcu. Proin vestibulum ante orci, vitae faucibus dolor dapibus et. Etiam viverra tincidunt risus vitae porta. Aliquam ipsum nunc, imperdiet pharetra enim ut, iaculis sollicitudin lorem. Proin metus ipsum, vulputate id elementum eu, ullamcorper in lorem. Donec quis eros et dui malesuada fermentum tincidunt quis dui.\r\n\r\nNam at feugiat justo. Nulla at ultricies mauris. Duis congue tristique diam, et semper massa consectetur nec. Fusce placerat tellus diam, ut cursus ipsum viverra non. Pellentesque quis velit vel metus scelerisque mattis pulvinar vel nisl. Nullam in eros nisi. Integer condimentum, mauris consequat dapibus pharetra, sem magna rhoncus ipsum, quis sodales arcu erat id arcu. Proin nec rhoncus libero. Etiam at tempor eros, vel dictum orci. Donec suscipit ac ipsum quis ornare. Etiam bibendum molestie egestas. Integer et ex sagittis, hendrerit orci eu, aliquet massa. Nullam bibendum vulputate sem porttitor pellentesque. Vivamus viverra erat vulputate, pulvinar ante a, condimentum nibh.'),
+(5, 'Event 2', '2017-02-21 20:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque faucibus orci, et placerat est cursus sit amet. Nulla hendrerit suscipit nulla vel vehicula. Donec eget ultrices arcu. Proin vestibulum ante orci, vitae faucibus dolor dapibus et. Etiam viverra tincidunt risus vitae porta. Aliquam ipsum nunc, imperdiet pharetra enim ut, iaculis sollicitudin lorem. Proin metus ipsum, vulputate id elementum eu, ullamcorper in lorem. Donec quis eros et dui malesuada fermentum tincidunt quis dui.\r\n\r\nNam at feugiat justo. Nulla at ultricies mauris. Duis congue tristique diam, et semper massa consectetur nec. Fusce placerat tellus diam, ut cursus ipsum viverra non. Pellentesque quis velit vel metus scelerisque mattis pulvinar vel nisl. Nullam in eros nisi. Integer condimentum, mauris consequat dapibus pharetra, sem magna rhoncus ipsum, quis sodales arcu erat id arcu. Proin nec rhoncus libero. Etiam at tempor eros, vel dictum orci. Donec suscipit ac ipsum quis ornare. Etiam bibendum molestie egestas. Integer et ex sagittis, hendrerit orci eu, aliquet massa. Nullam bibendum vulputate sem porttitor pellentesque. Vivamus viverra erat vulputate, pulvinar ante a, condimentum nibh.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Forum_FMC`
+--
+
+CREATE TABLE `BEZIERS_Forum_FMC` (
+  `ID_Forum` int(11) NOT NULL,
+  `Titre_F` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Texte_F` text COLLATE utf8_unicode_ci NOT NULL,
+  `Date_F` datetime NOT NULL,
+  `Categorie` int(11) NOT NULL,
+  `ID_Cat` int(11) DEFAULT NULL,
+  `ID_Createur` int(11) DEFAULT NULL,
+  `ID_Parent` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Forum_FMC`
+--
+
+INSERT INTO `BEZIERS_Forum_FMC` (`ID_Forum`, `Titre_F`, `Texte_F`, `Date_F`, `Categorie`, `ID_Cat`, `ID_Createur`, `ID_Parent`) VALUES
+(1, 'Findmycoop', '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."', '2017-01-25 10:07:00', 0, 9, 1, NULL),
+(2, 'Test', 'TestTestTest', '2017-01-26 03:05:10', 1, 11, 1, NULL),
+(3, 'module admin', 'creer 3 controller (detail,log,projet)+3vue', '2017-01-26 08:20:09', 0, 9, 2, 1),
+(18, 'task', 'testtask', '2017-01-25 09:26:09', 0, 9, 3, 1),
+(19, 'Pizz\'aoli', '"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"', '2017-01-31 08:24:08', 0, 9, 3, NULL),
+(20, 'Task pizza', 'creer les differente pizza (pizza\'dhiarré ect)', '2017-01-25 08:20:09', 0, 9, 3, 19),
+(21, 'Projet 5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada egestas ornare. Donec vehicula enim nec urna venenatis, sit amet mattis lorem consectetur. Duis et fermentum mauris, scelerisque euismod urna. Donec laoreet eleifend gravida. Integer sed mollis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis pellentesque id dolor in mollis. Vestibulum et imperdiet urna. Integer odio nisl, viverra ut sodales sed, mollis a dolor. Duis eu imperdiet massa. Aenean sit amet est sapien. Duis ac iaculis eros, sed placerat diam. Nunc erat leo, facilisis sed mattis at, bibendum eu eros. Nullam id orci posuere, iaculis felis vitae, aliquet dui. Sed sed venenatis elit, sit amet tempor ex. Aenean sodales porttitor risus a blandit.', '2017-01-24 08:30:23', 0, 6, 3, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Membre_FMC`
+--
+
+CREATE TABLE `BEZIERS_Membre_FMC` (
+  `ID_Membre` int(11) NOT NULL,
+  `Nom` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Prenom` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Pseudo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SiteWeb` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Photo` int(11) DEFAULT NULL,
+  `Admin` int(11) NOT NULL,
+  `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Code_Postal` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Membre_FMC`
+--
+
+INSERT INTO `BEZIERS_Membre_FMC` (`ID_Membre`, `Nom`, `Prenom`, `Pseudo`, `Description`, `Password`, `Adresse`, `SiteWeb`, `Photo`, `Admin`, `Email`, `Code_Postal`) VALUES
+(1, 'duban', 'remi', 'dubanremi', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus nulla, tempor sit amet varius quis, dignissim quis lacus. Proin maximus mauris vitae lacus pellentesque, vitae laoreet mauris hendrerit. Proin ac libero a enim tempus blandit. Sed amet.', 'dubanremi', '', 'remi.fr', 1, 0, 'qdqdz', 34420),
+(2, 'sidobre', 'morgane', 'morganesdb', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus nulla, tempor sit amet varius quis, dignissim quis lacus. Proin maximus mauris vitae lacus pellentesque, vitae laoreet mauris hendrerit. Proin ac libero a enim tempus blandit. Sed amet.', 'morgane', '1 rue de la paix', NULL, 1, 0, 'qddqdzq', 34500),
+(3, 'Marty', 'Bruno', 'Bruno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus nulla, tempor sit amet varius quis, dignissim quis lacus. Proin maximus mauris vitae lacus pellentesque, vitae laoreet mauris hendrerit. Proin ac libero a enim tempus blandit. Sed amet.', '050292', '8 rue des peupliers ', NULL, 1, 0, 'qdqz', 34500),
+(4, 'admin', 'admin', 'admin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus nulla, tempor sit amet varius quis, dignissim quis lacus. Proin maximus mauris vitae lacus pellentesque, vitae laoreet mauris hendrerit. Proin ac libero a enim tempus blandit. Sed amet.', 'admin', 'admin', 'admin', 0, 1, 'admin@admin.admin', 34500);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Message_FMC`
+--
+
+CREATE TABLE `BEZIERS_Message_FMC` (
+  `ID_Mess` int(11) NOT NULL,
+  `Sujet_Mess` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Texte_Mess` text COLLATE utf8_unicode_ci NOT NULL,
+  `Date_Mess` date NOT NULL,
+  `Description` text COLLATE utf8_unicode_ci,
+  `Lu` tinyint(1) DEFAULT NULL,
+  `ID_Exp` int(11) DEFAULT NULL,
+  `ID_Dest` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Message_FMC`
+--
+
+INSERT INTO `BEZIERS_Message_FMC` (`ID_Mess`, `Sujet_Mess`, `Texte_Mess`, `Date_Mess`, `Description`, `Lu`, `ID_Exp`, `ID_Dest`) VALUES
+(1, 'coucou', 'coucoucou', '2017-01-31', NULL, 0, 3, 2),
+(2, 'Test ', 'qdzqf rq ed qze qzdq', '2017-01-31', NULL, 0, 3, 4),
+(3, 'Lorem Ypsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis interdum justo, eget maximus tortor. Proin congue ante metus, ac vulputate massa bibendum non. Fusce sodales lectus odio, nec euismod nibh pharetra at. Vestibulum lacinia erat ac purus bibendum, et sollicitudin sem lacinia. Integer blandit, turpis sit amet efficitur iaculis, lectus velit ultricies orci, eu malesuada urna sem vestibulum felis. Sed fermentum, ipsum pretium mollis ornare, lorem sapien molestie urna, in pretium elit enim ut massa. Aenean non iaculis libero. Phasellus placerat vestibulum urna, eu tincidunt lorem maximus a. Quisque nulla turpis, euismod a ante et, ornare elementum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam viverra urna sit amet elit semper, et porttitor tellus semper. Vivamus blandit massa et dapibus posuere. Integer cursus consectetur ex, ut porttitor augue. Nam dapibus elit ut enim iaculis, at lacinia ex finibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam erat volutpat.\r\n\r\nEtiam luctus sapien mattis odio sodales ultrices. Pellentesque id mauris a odio varius sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum finibus ligula at lacus ullamcorper, tincidunt porttitor tortor varius. Duis eget urna tristique, molestie mauris ut, porta nisl. Vivamus sed aliquam leo. Etiam cursus hendrerit augue, vel ultrices metus molestie nec. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque ultrices imperdiet orci quis rutrum. In ac vehicula dui, et faucibus velit. Sed tempor velit id libero vulputate auctor. Nam urna urna, cursus sed imperdiet ut, iaculis quis diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum leo justo, tincidunt a faucibus a, blandit sed mi. Vivamus facilisis, orci non feugiat lacinia, risus dolor tristique erat, ac consequat leo tellus bibendum diam.\r\n\r\n', '2017-01-31', NULL, 0, 3, 4),
+(10, 'Test ', 'Bonjour', '2017-01-31', NULL, NULL, 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Site_FMC`
+--
+
+CREATE TABLE `BEZIERS_Site_FMC` (
+  `ID_Site` int(11) NOT NULL,
+  `Sujet` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `Contenu` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Site_FMC`
+--
+
+INSERT INTO `BEZIERS_Site_FMC` (`ID_Site`, `Sujet`, `Contenu`) VALUES
+(1, 'Présentation', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam gravida leo non sem consequat sodales. Sed pulvinar eu leo quis cursus. In lacinia, nibh vel posuere posuere, ex diam ultrices turpis, a congue sapien turpis at tortor. Mauris ultrices tincidunt velit sed lacinia. Sed diam mauris, commodo at sapien vitae, tincidunt pulvinar nisl. Duis dapibus nibh ac tortor efficitur, sed faucibus odio mattis. Nullam a arcu leo.\n\nVestibulum ac dolor eget urna dignissim faucibus. Pellentesque ut diam quis urna venenatis volutpat. Pellentesque sagittis nulla nec placerat venenatis. Cras tellus lorem, imperdiet ut fermentum et, tempus quis purus. Etiam a ligula et ante eleifend dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam neque lectus, cursus et luctus non, finibus eget purus. Morbi maximus ex rhoncus gravida tincidunt. Vivamus lacinia leo enim. Donec sagittis pretium erat et dignissim. Vivamus suscipit nisi id vestibulum ornare. Cras mattis, justo a ultrices finibus, dui neque tempus dolor, vel efficitur sem leo sed tortor. Cras efficitur ultrices enim, et tristique ipsum elementum vitae. Maecenas tortor dolor, bibendum nec aliquam sit amet, lacinia nec neque. Fusce posuere lacinia tortor, sed dapibus neque efficitur quis. Nullam bibendum sagittis nibh a tempus.\n\nDuis id feugiat nibh. Duis sodales blandit enim, vel pretium mauris tincidunt quis. Fusce a ante a est cursus ultrices ut at orci. Sed commodo dui a consectetur blandit. In hac habitasse platea dictumst. Etiam rhoncus nulla quis porttitor tincidunt. Etiam a mattis turpis.\n\nDonec at sem sodales, mollis nisi at, porttitor felis. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc venenatis molestie leo non tincidunt. Curabitur accumsan placerat ultrices. Nam et ultrices sapien, non consequat lorem. Etiam fermentum fringilla tellus pharetra blandit. Duis felis nunc, placerat ac ultrices ut, rutrum lobortis sem.\n\nNam rutrum est vitae tortor tempor sollicitudin. Maecenas tincidunt velit egestas, feugiat enim vitae, posuere ante. Quisque semper mauris vitae cursus fringilla. In ullamcorper facilisis lorem id tempus. Phasellus sit amet dictum nisi. Aliquam sed quam augue. Cras dictum sed est non fermentum. Donec pretium tincidunt semper. Phasellus massa turpis, vestibulum at turpis sit amet, fermentum aliquam ante. Mauris ipsum sapien, malesuada nec pretium in, tincidunt eu augue. In suscipit sem id orci venenatis rutrum. Curabitur molestie vulputate enim in venenatis.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BEZIERS_Ville_FMC`
+--
+
+CREATE TABLE `BEZIERS_Ville_FMC` (
+  `Code_Postal` int(11) NOT NULL,
+  `Nom_Ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `BEZIERS_Ville_FMC`
+--
+
+INSERT INTO `BEZIERS_Ville_FMC` (`Code_Postal`, `Nom_Ville`) VALUES
+(34420, 'Portiragnes'),
+(34500, 'Béziers');
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `BEZIERS_Categorie_FMC`
+--
+ALTER TABLE `BEZIERS_Categorie_FMC`
+  ADD PRIMARY KEY (`ID_Cat`),
+  ADD KEY `IDX_95010DFE67923061` (`ID_Parent`);
+
+--
+-- Index pour la table `BEZIERS_Event_FMC`
+--
+ALTER TABLE `BEZIERS_Event_FMC`
+  ADD PRIMARY KEY (`ID_Event`);
+
+--
+-- Index pour la table `BEZIERS_Forum_FMC`
+--
+ALTER TABLE `BEZIERS_Forum_FMC`
+  ADD PRIMARY KEY (`ID_Forum`),
+  ADD KEY `IDX_63E8D7CEFEDAC720` (`ID_Cat`),
+  ADD KEY `IDX_63E8D7CE9AB4D840` (`ID_Createur`),
+  ADD KEY `IDX_63E8D7CE67923061` (`ID_Parent`);
+
+--
+-- Index pour la table `BEZIERS_Membre_FMC`
+--
+ALTER TABLE `BEZIERS_Membre_FMC`
+  ADD PRIMARY KEY (`ID_Membre`),
+  ADD KEY `IDX_8D92C27A4DA426D6` (`Code_Postal`);
+
+--
+-- Index pour la table `BEZIERS_Message_FMC`
+--
+ALTER TABLE `BEZIERS_Message_FMC`
+  ADD PRIMARY KEY (`ID_Mess`),
+  ADD KEY `IDX_16310014663AD693` (`ID_Exp`),
+  ADD KEY `IDX_163100146B65A605` (`ID_Dest`);
+
+--
+-- Index pour la table `BEZIERS_Site_FMC`
+--
+ALTER TABLE `BEZIERS_Site_FMC`
+  ADD PRIMARY KEY (`ID_Site`);
+
+--
+-- Index pour la table `BEZIERS_Ville_FMC`
+--
+ALTER TABLE `BEZIERS_Ville_FMC`
+  ADD PRIMARY KEY (`Code_Postal`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Categorie_FMC`
+--
+ALTER TABLE `BEZIERS_Categorie_FMC`
+  MODIFY `ID_Cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Event_FMC`
+--
+ALTER TABLE `BEZIERS_Event_FMC`
+  MODIFY `ID_Event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Forum_FMC`
+--
+ALTER TABLE `BEZIERS_Forum_FMC`
+  MODIFY `ID_Forum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Membre_FMC`
+--
+ALTER TABLE `BEZIERS_Membre_FMC`
+  MODIFY `ID_Membre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Message_FMC`
+--
+ALTER TABLE `BEZIERS_Message_FMC`
+  MODIFY `ID_Mess` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Site_FMC`
+--
+ALTER TABLE `BEZIERS_Site_FMC`
+  MODIFY `ID_Site` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `BEZIERS_Ville_FMC`
+--
+ALTER TABLE `BEZIERS_Ville_FMC`
+  MODIFY `Code_Postal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34501;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `BEZIERS_Categorie_FMC`
+--
+ALTER TABLE `BEZIERS_Categorie_FMC`
+  ADD CONSTRAINT `FK_95010DFE67923061` FOREIGN KEY (`ID_Parent`) REFERENCES `BEZIERS_Categorie_FMC` (`ID_Cat`);
+
+--
+-- Contraintes pour la table `BEZIERS_Forum_FMC`
+--
+ALTER TABLE `BEZIERS_Forum_FMC`
+  ADD CONSTRAINT `FK_63E8D7CE67923061` FOREIGN KEY (`ID_Parent`) REFERENCES `BEZIERS_Forum_FMC` (`ID_Forum`),
+  ADD CONSTRAINT `FK_63E8D7CE9AB4D840` FOREIGN KEY (`ID_Createur`) REFERENCES `BEZIERS_Membre_FMC` (`ID_Membre`),
+  ADD CONSTRAINT `FK_63E8D7CEFEDAC720` FOREIGN KEY (`ID_Cat`) REFERENCES `BEZIERS_Categorie_FMC` (`ID_Cat`);
+
+--
+-- Contraintes pour la table `BEZIERS_Membre_FMC`
+--
+ALTER TABLE `BEZIERS_Membre_FMC`
+  ADD CONSTRAINT `FK_8D92C27A4DA426D6` FOREIGN KEY (`Code_Postal`) REFERENCES `BEZIERS_Ville_FMC` (`Code_Postal`);
+
+--
+-- Contraintes pour la table `BEZIERS_Message_FMC`
+--
+ALTER TABLE `BEZIERS_Message_FMC`
+  ADD CONSTRAINT `FK_16310014663AD693` FOREIGN KEY (`ID_Exp`) REFERENCES `BEZIERS_Membre_FMC` (`ID_Membre`),
+  ADD CONSTRAINT `FK_163100146B65A605` FOREIGN KEY (`ID_Dest`) REFERENCES `BEZIERS_Membre_FMC` (`ID_Membre`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

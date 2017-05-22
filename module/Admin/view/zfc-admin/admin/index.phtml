@@ -1,0 +1,30 @@
+<?php
+if($_SESSION['admin']==1){
+?>
+<div class="container">
+    <h2>Accueil</h2>
+
+    
+            <a href="admin/category"><i class="fam-cog"></i> Catégories</a>
+   
+      
+            Gestion des catégories
+       
+  
+    <hr />
+ 
+            <a href="admin/event"><i class="fam-page"></i> Evènements</a>
+     
+   
+            Gestion des Evènements
+
+   
+    <hr />
+
+            <a href="admin/membre"><i class="fam-user"></i> Utilisateurs</a>
+    
+            Gestion des utilisateurs
+</div>
+<?php }
+else { ?>
+<h2>Non Autorisé</h2> <?php } ?>

@@ -1,0 +1,20 @@
+
+<div id="membre">
+ <?php foreach ($membre as $user) : 
+     if($user->getPhoto()){
+     $photo ="photo".$user->getIdMembre(); 
+     }
+     else{
+     $photo = "defaut";}?>
+    <section><a href="membre/detail/<?php echo $user->getIdMembre(); ?>"><article class="col-md-9">
+                <ul><li><?php echo "Nom : ".$user->getNom();?></li>
+     <li><?php echo "Prénom : ".$user->getPrenom();?></li>
+     <li><?php echo "Pseudo : ".$user->getPseudo();?></li></ul><hr>
+                <p><?php echo substr($user->getDescription(),0,80);?></p>
+     </article><article class="col-md-3"><img src="img/membre/<?php echo $photo;?>.jpg" alt="">
+    
+     </article></a></section>
+
+ <?php endforeach; ?>
+
+</div>

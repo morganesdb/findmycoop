@@ -1,0 +1,32 @@
+
+<td><?php echo $detailb->getIdCreateur()->getNom(); ?></td>
+<td><?php echo $detailb->getTexteF(); ?></td><!--afficher le texte du projet -->
+              <?php if ($_SESSION['admin']){
+   ?> <a href="/deletebr/<?php echo $detailb->getIdForum(); ?>">Supprimer</a><?php
+    }?>
+
+<?php
+foreach ($forumall as $all):
+
+
+    if ($all->getIdParent() == $detailb) {
+        ?> <hr> <?php
+        echo $all->getTitreF(); // afficher le titre de la tache (lier au projet) 
+        if (!empty($all->getIdCreateur())) {
+
+            echo ' Auteur : ' . $all->getIdCreateur()->getNom();
+        }
+        ?> <br> <?php
+        echo $all->getTexteF(); // affiche le texte de la tache 
+        if ($_SESSION['admin']){
+   ?> <a href="/deleteevent/<?php echo $all->getIdForum(); ?>">Supprimer</a><?php
+    }
+    }
+endforeach;
+
+    ?><hr><a href="../creatr/<?php echo $detailb->getIdForum(); ?>">Ajouter</a><?php
+
+?>
+
+
+

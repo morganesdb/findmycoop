@@ -1,0 +1,29 @@
+<?php 
+
+if($_SESSION['admin']==1){ ?>
+<h1>Catégorie</h1>
+
+<a href="/admin/category/add">Ajouter une Catégorie</a><br>
+
+<?php foreach ($category as  $cat) : 
+     if(empty($cat->getIdParent())){
+         echo $cat -> getNomCat() ; 
+         
+         ?> <a href="/admin/category/delete/<?php echo $cat->getIdCat(); ?>">Supprimer</a>
+         <a href="/admin/category/edit/<?php echo $cat->getIdCat(); ?>">Modifier</a> <br>
+     <?php }
+    foreach ($category as  $cat1):
+    if ($objet = $cat1-> getIdParent()) {
+       if($objet -> getIdCat() == $cat -> getIdCat()){
+        echo $cat1 -> getNomCat(); 
+    ?> 
+        <a href="/admin/category/delete/<?php echo $cat1->getIdCat(); ?>">Supprimer</a> <a href="/admin/category/edit/<?php echo $cat1->getIdCat(); ?>">Modifier</a>   <br>
+    <?php
+       }
+    }
+  endforeach;
+ ?> 
+     <br>            
+<?php endforeach; }
+else{?>
+<h2> Non Autorisé</h2> <?php }

@@ -1,0 +1,38 @@
+<?php
+   ?> <a href="/creatb">Nouveau</a>
+   <?php
+foreach ($bar as $cat) :
+    if (empty($cat->getIdParent())) {
+        echo $cat->getNomCat();
+         ?> <br> <?php
+    }
+    foreach ($bar as $cat1):
+        if ($objet = $cat1->getIdParent()) {
+            if ($objet->getIdCat() == $cat->getIdCat()) {
+                echo $cat1->getNomCat();
+                
+                foreach ($forum as $post):
+                    if ($cat1->getIdCat() == $post->getIdCat()->getIdCat()) {
+                        ?> <br> <a href="/detailb/<?php echo $post->getIdForum(); ?>" ><ul><?php
+                        ?> <li> <?php echo $post->getTitreF();?> </li> <?php
+                       ?> <li> <?php echo ' autheur : ';
+                        echo $post->getIdCreateur()->getNom();?> </li> <?php
+                        ?> </ul></a><?php
+                    }
+
+                endforeach;
+                 ?> <br> <?php
+            }
+        }
+    endforeach;
+    
+    ?>
+
+    <br>
+
+
+
+
+
+
+<?php endforeach; ?>

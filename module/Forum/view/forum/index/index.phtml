@@ -1,0 +1,48 @@
+
+
+<?php if($_SESSION){
+    ?>
+<h1>Carnet de Bord</h1>
+    <?php $n = 0;
+    foreach ($projets as $pro) : 
+       
+        ?>
+<div class="carnet">
+    
+        <?php 
+       
+        if($pro ->getIdParent()&&($pro ->getIdCreateur() != $pro ->getIdParent() -> getIdCreateur())){
+            
+            echo "<p><b>Projet: </b>".$pro -> getIdParent() -> getTitreF()."<br>";
+            echo "<b>Auteur: </b>".$pro -> getIdParent()-> getIdCreateur() -> getPseudo()."<br>";
+            echo "<b>Description:</b> ".$pro -> getIdParent() -> getTexteF()."</p>";
+            ?>
+    <a href="detailp/<?php echo $pro -> getIdParent() -> getIdForum();?>">DETAILS</a>
+            <?php
+            
+        }
+        else {          
+            echo "<p><b>Projet: </b>".$pro -> getTitreF()."<br>";
+            echo "<b>Auteur: </b>".$pro -> getIdCreateur() -> getPseudo()."<br>";
+            echo "<b>Description: </b>".$pro -> getTexteF()."</p>";
+
+             ?>
+    <a href="detailp/<?php echo $pro -> getIdForum();?>">DETAILS</a>
+            <?php
+        }
+?>
+    
+</div>
+
+<?php endforeach;
+}
+
+else {
+  foreach ($site as $page) : ?>
+
+    <h1><?php echo $page->getSujet();?></h1><br>
+    <br><p><?php echo $page->getContenu();?></p>
+
+<?php endforeach;   
+}
+?>
